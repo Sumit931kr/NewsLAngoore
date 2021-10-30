@@ -1,6 +1,4 @@
-
 import './App.css';
-
 import React, { Component } from 'react'
 import Navbar from './Component/Navbar';
 import News from './Component/News';
@@ -12,7 +10,7 @@ import {
 
 
 export default class App extends Component {
-pageSize = 6;
+pageSize = 8;
   render() {
    return (
       <div>
@@ -26,7 +24,7 @@ pageSize = 6;
           <Route exact path="/science"> <News key = "science" pageSize={this.pageSize}country="in" category='science'/>  </Route>
           <Route exact path="/health"> <News key = "health" pageSize={this.pageSize}country="in" category='health'/>  </Route>
           <Route exact path="/entertainment"> <News key = "entertainment" pageSize={this.pageSize}country="in" category='entertainment'/>  </Route>
-          <Route exact path="/business"> <News key = "business" pageSize={this.pageSize}country="in" category='business'/>  </Route> key = ""
+          <Route exact path="/business"> <News key = "business" pageSize={this.pageSize}country="in" category='business'/>  </Route>
          
         </Switch>
       </Router>
