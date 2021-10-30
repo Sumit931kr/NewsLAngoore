@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 export class news extends Component {
   static defaultProps = {
     country: "in",
-    pagesize: 10,
+    pageSize: 7,
     category: "general",
   };
   static propTypes = {
@@ -26,56 +26,32 @@ export class news extends Component {
     };
   }
 
+async updateNews(){
+  this.setState({ loading: true });
+  const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3530665078ab4ff1a9dcedaf8d3ee742&o&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+  let data = await fetch(url);
+  let parsedData = await data.json();
+  this.setState({
+    articles: parsedData.articles,
+    totalResults: parsedData.totalResults,
+    loading: false,
+  });
+}
+
   async componentDidMount() {
-    this.setState({ loading: true });
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3530665078ab4ff1a9dcedaf8d3ee742&pageSize=${this.props.pagesize}`;
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    console.log(parsedData);
-    this.setState({
-      articles: parsedData.articles,
-      totalResults: parsedData.totalResults,
-      loading: false,
-    });
+   this.updateNews();
   }
 
   handlePrevclick = async () => {
-    console.log("Previous");
-    let url = `https://newsapi.org/v2/top-headlines?country=${
-      this.props.country
-    }&category=${
-      this.props.category
-    }&apiKey=3530665078ab4ff1a9dcedaf8d3ee742&page=${
-      this.state.page - 1
-    }&pageSize=${this.props.pagesize}`;
-    this.setState({ loading: true });
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    this.setState({
-      page: this.state.page - 1,
-      articles: parsedData.articles,
-      loading: false,
-    });
+
+    this.setState({page: this.state.page -1})
+    this.updateNews();
   };
 
   handleNextclick = async () => {
-    console.log("Next");
-
-    let url = `https://newsapi.org/v2/top-headlines?country=${
-      this.props.country
-    }&category=${
-      this.props.category
-    }&apiKey=3530665078ab4ff1a9dcedaf8d3ee742&page=${
-      this.state.page + 1
-    }&pageSize=${this.props.pagesize}`;
-    this.setState({ loading: true });
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    this.setState({
-      page: this.state.page + 1,
-      articles: parsedData.articles,
-      loading: false,
-    });
+ 
+    this.setState({page: this.state.page +1})
+    this.updateNews();
   };
 
   render() {
