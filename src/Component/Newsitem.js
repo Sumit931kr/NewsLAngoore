@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import rescue from "../image/rescue.png";
 
 export class Newsitems extends Component {
   render() {
@@ -13,7 +14,7 @@ export class Newsitems extends Component {
           <img
             src={
               !imageUrl
-                ? "https://images.moneycontrol.com/static-mcnews/2021/10/stocks_sensex_nifty_stockmarkets-2-770x433.jpg"
+                ? rescue
                 : imageUrl
             }
             className="card-img-top"

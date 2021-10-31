@@ -9,8 +9,10 @@ import {
 } from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar'
 
+
 export default class App extends Component {
-pageSize = 8;
+  apikey= 'e27ad7144cd046109eb7bae9fbc9da05'
+pageSize = 8
 state={
   progress : 0
 }
@@ -31,13 +33,13 @@ state={
       />
    
       <Switch>
-          <Route exact path="/"> <News setProgess={this.setProgess} key = "general" pageSize={this.pageSize}country="in" category='general'/>  </Route>
-          <Route exact path="/sports"> <News setProgess={this.setProgess} key = "sports" pageSize={this.pageSize}country="in" category='sports'/>  </Route>
-          <Route exact path="/technology"> <News setProgess={this.setProgess} key = "technology" pageSize={this.pageSize}country="in" category='technology'/>  </Route>
-          <Route exact path="/science"> <News setProgess={this.setProgess} key = "science" pageSize={this.pageSize}country="in" category='science'/>  </Route>
-          <Route exact path="/health"> <News setProgess={this.setProgess} key = "health" pageSize={this.pageSize}country="in" category='health'/>  </Route>
-          <Route exact path="/entertainment"> <News setProgess={this.setProgess} key = "entertainment" pageSize={this.pageSize}country="in" category='entertainment'/>  </Route>
-          <Route exact path="/business"> <News setProgess={this.setProgess} key = "business" pageSize={this.pageSize}country="in" category='business'/>  </Route>
+          <Route exact path="/"> <News apikey={this.apikey} setProgess={this.setProgess} key = "general" pageSize={this.pageSize}country="in" category='general'/>  </Route>
+          <Route exact path="/sports"> <News apikey={this.apikey} setProgess={this.setProgess} key = "sports" pageSize={this.pageSize}country="in" category='sports'/>  </Route>
+          <Route exact path="/technology"> <News apikey={this.apikey} setProgess={this.setProgess} key = "technology" pageSize={this.pageSize}country="in" category='technology'/>  </Route>
+          <Route exact path="/science"> <News apikey={this.apikey} setProgess={this.setProgess} key = "science" pageSize={this.pageSize}country="in" category='science'/>  </Route>
+          <Route exact path="/health"> <News apikey={this.apikey} setProgess={this.setProgess} key = "health" pageSize={this.pageSize}country="in" category='health'/>  </Route>
+          <Route exact path="/entertainment"> <News apikey={this.apikey} setProgess={this.setProgess} key = "entertainment" pageSize={this.pageSize}country="in" category='entertainment'/>  </Route>
+          <Route exact path="/business"> <News apikey={this.apikey} setProgess={this.setProgess} key = "business" pageSize={this.pageSize}country="in" category='business'/>  </Route>
          
         </Switch>
       </Router>
